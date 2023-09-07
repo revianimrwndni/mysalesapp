@@ -1,0 +1,11 @@
+{
+  "name": "mysalesapp",
+  "version": "1.0.0",
+  "description": "Aplikasi web berbasis Node.js untuk penjualan dan manajemen produk",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "revianimarwan",
+  "license": "ISC"
+}
