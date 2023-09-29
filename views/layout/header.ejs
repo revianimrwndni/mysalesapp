@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><% title %></title>
+    <!-- Tautan Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<style>
+    
+    /* Kustomisasi warna navbar */
+    .custom-navbar {
+        background-color: #76797b; /* Ganti dengan warna yang Anda inginkan */
+        color: white; /* Warna teks */
+    }
+    /* Warna teks putih */
+    .navbar-light .navbar-nav .nav-link {
+            color: white !important; /* Warna teks putih */
+        }
+
+        /* Warna teks putih untuk dropdown */
+        .navbar-light .navbar-nav .nav-item.dropdown:hover .nav-link, .navbar-light .navbar-nav .nav-item.dropdown.show .nav-link {
+            color: white !important; /* Warna teks putih saat hover */
+        }
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light custom-navbar">
+        <div class="container">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/daftar-produk">Produk</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Management Stock
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/barang-masuk">Barang Masuk</a></li>
+                            <li><a class="dropdown-item" href="/riwayat-barang-masuk">Riwayat Barang Masuk</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Management Transaksi
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="/transaksi-penjualan">Transaksi Penjualan</a></li>
+                            <li><a class="dropdown-item" href="/riwayat-transaksi">Riwayat Transaksi</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <div style="flex-grow: 1;"></div> <!-- Ini akan membuat elemen berikutnya pindah ke sebelah kanan -->
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/login" style="font-size: 1rem; margin-right: 10px;">Logout</a>
+            </li>
+        </ul>
+    </div>
+            </div>
+        </div>
+    </nav>
+    
+
+    <!-- Tautan Bootstrap JavaScript dan Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

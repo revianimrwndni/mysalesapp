@@ -1,0 +1,52 @@
+<%- include('layout/header') %>
+<style>
+    /* Styling untuk judul utama */
+    .jumbotron {
+        text-align: center; /* Pusatkan teks */
+        background-color: #f8f9fa; /* Warna latar belakang */
+        padding: 50px; /* Beri jarak dari tepi */
+        margin-bottom: 20px; /* Beri jarak bawah dari elemen berikutnya */
+    }
+
+    /* Styling untuk judul produk yang masuk */
+    h1 {
+        text-align: center; /* Pusatkan teks */
+        font-size: 24px; /* Ukuran font */
+        margin-top: 20px; /* Beri jarak dari judul utama */
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    h6 {
+        font-family: 'Times New Roman', Times, serif;
+    }
+
+    /* Styling untuk card produk */
+    .card {
+        margin: 10px auto; /* Atur jarak atas dan bawah menjadi 10px dan tengah secara horizontal */
+        width: 200px; /* Lebar card */
+        background-color: #76797b; /* Warna latar belakang judul */
+        color: #ffffff; /* Warna teks judul */
+    }
+
+    /* Styling untuk card title */
+    .card-title {
+        font-size: 18px; /* Ukuran font */
+       
+    }
+</style>
+<div class="container mt-5">
+    <div class="row"> 
+        <% produkMasuk.forEach((produk) => { %>
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="/img/<%= produk.gambar %>" alt="<%= produk.nama %>" class="card-img-top" style="width: 100%; height: auto;">
+                    <div class="card-body" style="text-align: center;">
+                        <h5 class="card-title"><%= produk.nama %></h5>
+                        <a href="/detail-produk/<%= produk.id %>" class="btn btn-dark btn-sm">Detail</a>
+                    </div>
+                </div>
+            </div>                  
+        <% }); %>
+    </div>
+</div>
+<%- include('layout/footer') %>

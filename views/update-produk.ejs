@@ -1,0 +1,22 @@
+<%- include('layout/header') %>
+
+<div class="container mt-5">
+    <h2>Edit Produk</h2>
+    <form action="/update-produk/<%= produk.id %>" method="POST">
+        <div class="mb-3">
+            <label for="namaProduk" class="form-label">Nama Produk</label>
+            <input type="text" class="form-control" id="namaProduk" name="namaProduk" value="<%= produk.nama %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="hargaProduk" class="form-label">Harga Produk</label>
+            <input type="number" class="form-control" id="hargaProduk" name="hargaProduk" value="<%= produk.harga %>" required>
+        </div>
+        <div class="mb-3">
+            <label for="deskripsiProduk" class="form-label">Deskripsi Produk</label>
+            <textarea class="form-control" id="deskripsiProduk" name="deskripsiProduk" rows="4" required><%= produk.deskripsi %></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+    </form>
+</div>
+
+<%- include('layout/footer') %>

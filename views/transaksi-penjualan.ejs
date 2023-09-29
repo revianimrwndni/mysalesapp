@@ -1,0 +1,63 @@
+<!-- views/transaksi-penjualan.ejs -->
+<%- include('layout/header') %>
+<div class="container mt-5">
+    <h2 style="font-family:'Times New Roman', Times, serif">Transaksi Penjualan</h2>
+    <form action="/transaksi-penjualan" method="POST" onsubmit="return validateForm()">
+        <!-- Pilih produk yang dijual dari dropdown -->
+        <div class="mb-3">
+            <label for="produkId" class="form-label">Produk yang Dijual</label>
+            <select class="form-select" id="produk_id" name="produk_id" required>
+                <option value="" disabled selected>Pilih Produk</option>
+                <% for (let i = 0; i < produk.length; i++) { %>
+                    <option value="<%= produk[i].nama %>" data-stok="<%= produk[i].stok %>" data-harga="<%= produk[i].harga %>"><%= produk[i].nama %></option>
+                <% } %>
+            </select>
+            
+        </div>
+   
+        <!-- Tambahkan input untuk harga -->
+        <div class="mb-3">
+            <label for="harga" class="form-label">Harga</label>
+            <input type="text" class="form-control" id="harga" name="harga" readonly>
+        </div>
+        <div class="mb-3">
+            <label for="jumlahTerjual" class="form-label">Jumlah Terjual</label>
+            <input type="number" class="form-control" id="jumlahTerjual" name="jumlahTerjual" required>
+        </div>
+        <div class="mb-3">
+            <label for="tanggalPenjualan" class="form-label">Tanggal Penjualan</label>
+            <input type="date" class="form-control" id="tanggalPenjualan" name="tanggalPenjualan" required>
+        </div>
+       
+        <button type="submit" class="btn btn-dark">Simpan</button>
+    </form>
+</div>
+<%- include('layout/footer') %>
+
+ <script>
+   function validateForm() {
+    const selectedOption = document.getElementById('produk_id');
+    const stok = selectedOption.options[selectedOption.selectedIndex].getAttribute('data-stok');
+    const jumlahTerjual = document.getElementById('jumlahTerjual').value;
+    const namaProduk = selectedOption.options[selectedOption.selectedIndex].text; // Mendapatkan teks yang terpilih
+
+    if (parseInt(jumlahTerjual) > parseInt(stok)) {
+        alert('Stok produk ' + namaProduk + ' hanya tersedia ' + stok + '. Tidak mencukupi untuk jumlah yang diminta. Silahkan tambahkan stok produk terlebih dahulu!');
+        return false; // Mencegah pengiriman formulir jika stok tidak mencukupi.
+    }
+
+    alert('Anda membeli ' + jumlahTerjual + ' produk ' + namaProduk + '. Stok produk ' + namaProduk + ' yang tersedia: ' + stok);
+    return true;
+}
+
+
+   
+    const produkDropdown = document.getElementById('produk_id');
+    const hargaInput = document.getElementById('harga');
+
+    produkDropdown.addEventListener('input', function () {
+        const selectedOption = produkDropdown.options[produkDropdown.selectedIndex];
+        const hargaProduk = selectedOption.getAttribute('data-harga');
+        hargaInput.value = hargaProduk;
+    });
+</script>

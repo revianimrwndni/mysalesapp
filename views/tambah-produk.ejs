@@ -1,0 +1,28 @@
+<%- include('layout/header') %>
+<div class="container mt-5">
+    <h2>Tambah Produk Baru</h2>
+    <form action="/tambah-produk" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="namaProduk" class="form-label">Nama Produk</label>
+            <input type="text" class="form-control" id="namaProduk" name="namaProduk" required>
+        </div>
+        <div class="mb-3">
+            <label for="hargaProduk" class="form-label">Harga Produk</label>
+            <input type="number" class="form-control" id="hargaProduk" name="hargaProduk" required>
+        </div>
+        <div class="mb-3">
+            <label for="deskripsiProduk" class="form-label">Deskripsi Produk</label>
+            <textarea class="form-control" id="deskripsiProduk" name="deskripsiProduk" rows="4" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="gambarProduk" class="form-label">Gambar Produk</label>
+            <input type="file" name="gambar" accept="image/*"required>
+        </div>
+        <div class="mb-3">
+            <label for="stokProduk" class="form-label">Stok Produk</label>
+            <input type="number" class="form-control" id="stokProduk" name="stokProduk" required>
+        </div>
+        <button type="submit" class="btn btn-dark">Tambah Produk</button>
+    </form>
+</div>
+<%- include('layout/footer') %>

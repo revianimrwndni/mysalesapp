@@ -1,0 +1,32 @@
+<!-- views/barang-masuk.ejs -->
+
+<%- include('layout/header') %>
+<div class="container mt-5">
+    <h2 style="font-family:'Times New Roman', Times, serif">Barang Masuk</h2>
+    <form action="/barang-masuk" method="POST">
+        <div class="mb-3">
+            <label for="namaBarangMasuk" class="form-label" >Nama Barang</label>
+            <select class="form-select" id="namaBarangMasuk" name="namaBarangMasuk" required>
+                <option value="" disabled selected>Pilih Nama Barang</option>
+                <% for (let i = 0; i < produk.length; i++) { %>
+                    <option value="<%= produk[i].nama %>"><%= produk[i].nama %></option>
+                <% } %>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="jumlahMasuk" class="form-label">Jumlah Stock Masuk</label>
+            <input type="number" class="form-control" id="jumlahMasuk" name="jumlahMasuk" required>
+        </div>
+        <div class="mb-3">
+            <label for="tanggalMasuk" class="form-label">Tanggal Masuk</label>
+            <input type="date" class="form-control" id="tanggalMasuk" name="tanggalMasuk" required>
+        </div>
+        <div class="mb-3">
+            <label for="keteranganMasuk" class="form-label">Keterangan</label>
+            <textarea class="form-control" id="keteranganMasuk" name="keteranganMasuk" rows="4" required></textarea>
+            
+        </div>
+        <button type="submit" class="btn btn-dark">Simpan</button>
+    </form>
+</div>
+<%- include('layout/footer') %>

@@ -1,0 +1,28 @@
+<%- include('layout/header') %>
+<div class="container mt-5">
+    <h3>Riwayat Barang Masuk</h3>
+    <table class="table table-bordered table-striped"> <!-- Tambahkan table-bordered -->
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center" style="width: 20%;">Tanggal</th>
+                <th>Nama Barang</th>
+                <th>Jumlah Stock Masuk</th>
+                <th>Keterangan</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <% riwayatBarangMasuk.forEach((item) => { %>
+                <tr>
+                    <td class="text-center"><%= new Date(item.tanggal).toLocaleDateString() %></td>
+                    <td><%= item.nama_barang %></td>
+                    <td><%= item.jumlah_masuk %></td>
+                    <td><%= item.keterangan %></td>
+                    
+                </tr>
+                
+            <% }); %>
+        </tbody>
+    </table>
+</div>
+<%- include('layout/footer') %>

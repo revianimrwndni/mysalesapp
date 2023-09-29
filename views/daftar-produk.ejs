@@ -1,0 +1,114 @@
+<%- include('layout/header') %>
+<style>
+   /* Tombol Edit */
+.btn-edit {
+    border-radius: 5px; 
+    background-color: #343a40; /* Warna latar belakang yang mirip dengan btn-dark */
+    border-color: #343a40; /* Warna border yang mirip dengan btn-dark */
+    color: #fff; /* Warna teks putih */
+}
+
+/* Tombol Delete */
+.btn-delete {
+    border-radius: 5px; 
+    background-color: #dc3545; /* Warna latar belakang yang mirip dengan btn-primary */
+    border-color: #dc3545; /* Warna border yang mirip dengan btn-primary */
+    color: #fff; /* Warna teks putih */
+}
+
+/* Gaya umum untuk tombol */
+.btn-group {
+    border: none; /* Menghapus border */
+    padding: 3px 16px;
+    cursor: pointer;
+    float: left;
+    margin-right: 10px;
+    border-radius: 4px; /* Agar tombol terlihat lebih ramping */
+    transition: background-color 0.3s, border-color 0.3s, color 0.3s; /* Animasi perubahan warna */
+}
+
+/* Gaya hover untuk tombol */
+.btn-group:hover {
+    opacity: 0.8; /* Membuat tombol agak transparan saat dihover */
+}
+
+
+        /* Clear floats (clearfix hack) */
+        .btn-group:after {
+        content: "";
+        clear: both;
+        display: table;
+        }
+
+        .btn-group button:last-child {
+        margin-right: 20px; /* Remove margin for the last button */
+        }
+</style>
+<div class="container mt-5">
+    <h2 class="text-center" style="font-family:'Times New Roman', Times, serif">Daftar Produk</h2>
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <a href="/tambah-produk" class="btn btn-dark">Tambahkan Produk</a>
+        </div>
+        <div class="col-md-6">
+            <div class="input-group">
+                <input type="text" id="searchInput" class="form-control" placeholder="Cari Nama Produk">
+                <button id="searchButton" class="btn btn-dark">Cari</button>
+            </div>
+        </div>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th scope="col" class="bg-dark text-white">No</th>
+                <th scope="col" class="bg-dark text-white">Nama</th>
+                <th scope="col" class="bg-dark text-white">Harga</th>
+                <th scope="col" class="bg-dark text-white">Stok</th>
+                <th scope="col" class="bg-dark text-white">Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let i = 0; i < produk.length; i++) { %>
+                <tr>
+                    <td class="text-center"><%= i + 1 %></td>
+                    <td><%= produk[i].nama %></td>
+                    <td class="text-center"><%= produk[i].harga.toLocaleString('id-ID') %></td>
+                    <td class="text-center"><%= produk[i].stok %></td>
+                    <td class="text-center">
+                        <div style="text-align: center;">
+                            <form action="/update-produk/<%= produk[i].id %>" method="GET" style="display: inline;">
+                                <button class="btn-edit" type="submit">Update</button>
+                            </form>
+                            <form action="/hapus-produk/<%= produk[i].id %>" method="GET" style="display: inline;">
+                                <button class="btn-delete" onclick="return confirm('Apakah Anda yakin ingin menghapus transaksi ini?')" type="submit">Delete</button>
+                            </form>
+                        </div>
+                        
+                    </td>
+                </tr>
+            <% } %>
+        </tbody>
+    </table>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const searchInput = document.getElementById('searchInput');
+        const searchButton = document.getElementById('searchButton');
+        const rows = document.querySelectorAll('tbody tr');
+
+        searchButton.addEventListener('click', function () {
+            const searchTerm = searchInput.value.toLowerCase();
+            rows.forEach(function (row) {
+                const namaBarang = row.querySelector('td:nth-child(2)').textContent.toLowerCase();
+                if (namaBarang.includes(searchTerm)) {
+                    row.style.display = 'table-row';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        });
+    });
+</script>
+</div>
+<%- include('layout/footer') %>

@@ -1,0 +1,30 @@
+<%- include('layout/header') %>
+<style>
+    .btn {
+        background-color: #76797b;
+        color: #fff;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 10px;
+        cursor: pointer;
+        }
+
+                </style>
+<div class="container mt-5">
+    <h2>Detail Produk</h2>
+    <div class="card">
+        <div class="card-body">
+            <img src="/img/<%= produk.gambar %>" alt="<%= produk.nama %>" class="card-img-top" style="width: 20%;">
+            <h5 class="card-title"><%= produk.nama %></h5>
+            <p class="card-text">Harga: <%= produk.harga.toLocaleString('id-ID') %></p>
+            <p class="card-text"><%= produk.deskripsi %></p>
+        </div>
+    </div>
+</div>
+
+<!-- Tombol "Kembali ke Dashboard" di bawah tabel -->
+<div class="container mt-3">
+    <a href="/" class="btn btn-dark">Kembali ke Dashboard</a>
+</div>
+
+<%- include('layout/footer') %>

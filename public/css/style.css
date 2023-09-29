@@ -1,0 +1,78 @@
+/* CSS untuk sidebar */
+.sidebar {
+    background-color: #f2f2f2;
+    width: 250px;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul li {
+    margin-bottom: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: #333;
+    display: block;
+    padding: 10px 15px;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul li a:hover {
+    background-color: #ddd;
+}
+
+/* CSS untuk konten utama */
+.main-content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* CSS untuk tombol Tambah Produk */
+.btn-tambah-produk {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.btn-tambah-produk:hover {
+    background-color: #0056b3;
+}
+
+/* CSS untuk tabel daftar produk */
+.daftar-produk {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.daftar-produk th, .daftar-produk td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.daftar-produk th {
+    background-color: #f2f2f2;
+}
+
+/* CSS untuk dashboard */
+.dashboard {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* Tambahkan gaya lain sesuai dengan kebutuhan Anda */

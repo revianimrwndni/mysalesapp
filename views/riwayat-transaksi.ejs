@@ -1,0 +1,42 @@
+<%- include('layout/header') %>
+<div class="container mt-5">
+    <h3 class="mb-3">Riwayat Transaksi Penjualan</h3>
+    <!-- Tambahkan tautan untuk mencetak PDF -->
+    
+    <table class="table table-bordered table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th class="text-center">Tanggal</th>
+                <th class="text-center">Nama Barang</th>
+                <th class="text-center">Jumlah Terjual</th>
+                <th class="text-center">Harga Satuan</th>
+                <th class="text-center">Total Harga</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            <% riwayatTransaksiPenjualan.forEach((penjualan) => { %>
+                <tr>
+                    <td><%= new Date(penjualan.tanggal_penjualan).toLocaleDateString() %></td>
+                    <td><%= penjualan.produk_id %></td>
+                    <td class="text-center"><%= penjualan.jumlah_terjual %></td>
+                    <td class="text-center">Rp <%= penjualan.harga.toLocaleString('id-ID') %></td>
+                    <td class="text-center">Rp <%= (penjualan.jumlah_terjual * penjualan.harga).toLocaleString('id-ID') %></td>
+                    
+                </tr>
+            <% }); %>
+        </tbody>
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tbody>
+                    <tr>
+                        <td><strong>Total Pendapatan Saat Ini</strong></td>
+                        <td class="text-center"><strong>Rp <%= riwayatTransaksiPenjualan.reduce((total, penjualan) => total + (penjualan.jumlah_terjual * penjualan.harga), 0).toLocaleString('id-ID') %></strong></td>
+                    </tr>
+                </tbody>
+            </table>
+            <a href="/cetak-pdf" class="btn btn-danger mb-3">Cetak Data Penjualan</a>
+        </div>
+    </table>
+</div>
+<%- include('layout/footer') %>
